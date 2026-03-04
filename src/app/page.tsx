@@ -116,7 +116,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/hero section.jpg"
+            src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg"
             alt="Construction Site"
             fill
             className="object-cover"
@@ -133,13 +133,13 @@ export default function Home() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <div className="inline-flex items-center space-x-2 bg-brand-gold/20 text-brand-gold px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <span className="w-2 h-2 bg-brand-gold rounded-full animate-pulse" />
+              <div className="inline-flex items-center space-x-2 bg-brand-secondary/20 text-brand-secondary px-4 py-2 rounded-full text-sm font-medium mb-6">
+                <span className="w-2 h-2 bg-brand-secondary rounded-full animate-pulse" />
                 <span>Transporters | Civil & Building Contractors</span>
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 font-heading leading-tight">
                 Building Infrastructure.<br />
-                <span className="text-brand-gold">Moving Progress.</span>
+                <span className="text-brand-secondary">Moving Progress.</span>
               </h1>
               <p className="text-lg text-gray-300 mb-8 max-w-xl leading-relaxed">
                 Amarachi Investment Company Ltd delivers dependable civil works, 
@@ -149,7 +149,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
                   href="/contact"
-                  className="bg-brand-gold text-white px-8 py-4 rounded-lg font-semibold text-center hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
+                  className="bg-brand-secondary text-white px-8 py-4 rounded-lg font-semibold text-center hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center justify-center space-x-2"
                 >
                   <span>Request a Quote</span>
                   <ArrowRight size={18} />
@@ -172,8 +172,8 @@ export default function Home() {
                     transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                     className="flex items-center space-x-3 text-white"
                   >
-                    <div className="w-10 h-10 bg-brand-blue/50 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <item.icon size={20} className="text-brand-light" />
+                    <div className="w-10 h-10 bg-brand-primary/50 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <item.icon size={20} className="text-brand-primary-light" />
                     </div>
                     <span className="text-sm font-medium">{item.text}</span>
                   </motion.div>
@@ -189,10 +189,10 @@ export default function Home() {
               className="hidden lg:block"
             >
               <div className="relative">
-                <div className="absolute -inset-4 bg-brand-gold/20 rounded-3xl transform rotate-3" />
+                <div className="absolute -inset-4 bg-brand-secondary/20 rounded-3xl transform rotate-3" />
                 <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                   <Image
-                    src="/excavator-digging-ground-day-light.jpg"
+                    src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg"
                     alt="Heavy Equipment"
                     width={600}
                     height={500}
@@ -222,7 +222,7 @@ export default function Home() {
       </section>
 
       {/* Trust Bar */}
-      <SectionWrapper className="bg-brand-blue py-12">
+      <SectionWrapper className="bg-brand-primary py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {trustItems.map((item, index) => (
@@ -235,7 +235,7 @@ export default function Home() {
                 className="flex items-center space-x-3 text-white"
               >
                 <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <item.icon size={24} className="text-brand-gold" />
+                  <item.icon size={24} className="text-brand-secondary" />
                 </div>
                 <span className="font-medium text-sm">{item.label}</span>
               </motion.div>
@@ -249,10 +249,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div className="relative">
-              <div className="absolute -inset-4 bg-brand-light/10 rounded-3xl transform -rotate-2" />
+              <div className="absolute -inset-4 bg-brand-primary-light/10 rounded-3xl transform -rotate-2" />
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/african-american-worker-standing-uniform-wearing-safety-hat-factory.jpg"
+                  src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg"
                   alt="Construction Worker"
                   width={600}
                   height={500}
@@ -260,15 +260,15 @@ export default function Home() {
                 />
               </div>
               {/* Floating badge */}
-              <div className="absolute -bottom-6 -right-6 bg-brand-gold text-white p-6 rounded-2xl shadow-xl">
+              <div className="absolute -bottom-6 -right-6 bg-brand-secondary text-white p-6 rounded-2xl shadow-xl">
                 <div className="text-3xl font-bold">Trusted</div>
                 <div className="text-sm opacity-90">Contractor</div>
               </div>
             </div>
 
             <div>
-              <div className="inline-flex items-center space-x-2 text-brand-blue font-medium mb-4">
-                <div className="w-8 h-0.5 bg-brand-gold" />
+              <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+                <div className="w-8 h-0.5 bg-brand-secondary" />
                 <span className="uppercase tracking-wide text-sm">About Us</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6 font-heading">
@@ -291,14 +291,14 @@ export default function Home() {
                   "Real-time fleet monitoring (ECTS)",
                 ].map((item) => (
                   <li key={item} className="flex items-center space-x-3">
-                    <CheckCircle size={20} className="text-brand-gold flex-shrink-0" />
+                    <CheckCircle size={20} className="text-brand-secondary flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
               <Link
                 href="/about"
-                className="inline-flex items-center space-x-2 text-brand-blue font-semibold hover:text-brand-gold transition-colors"
+                className="inline-flex items-center space-x-2 text-brand-primary font-semibold hover:text-brand-secondary transition-colors"
               >
                 <span>Learn More About Us</span>
                 <ArrowRight size={18} />
@@ -312,10 +312,10 @@ export default function Home() {
       <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 text-brand-blue font-medium mb-4">
-              <div className="w-8 h-0.5 bg-brand-gold" />
+            <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
               <span className="uppercase tracking-wide text-sm">What We Do</span>
-              <div className="w-8 h-0.5 bg-brand-gold" />
+              <div className="w-8 h-0.5 bg-brand-secondary" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
               Our Core Services
@@ -334,7 +334,7 @@ export default function Home() {
           <div className="text-center mt-12">
             <Link
               href="/services"
-              className="inline-flex items-center space-x-2 bg-brand-blue text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-dark transition-all duration-300"
+              className="inline-flex items-center space-x-2 bg-brand-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-dark transition-all duration-300"
             >
               <span>Explore All Services</span>
               <ArrowRight size={18} />
@@ -348,8 +348,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center space-x-2 text-brand-blue font-medium mb-4">
-                <div className="w-8 h-0.5 bg-brand-gold" />
+              <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+                <div className="w-8 h-0.5 bg-brand-secondary" />
                 <span className="uppercase tracking-wide text-sm">Our Fleet</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6 font-heading">
@@ -364,7 +364,7 @@ export default function Home() {
                 {equipmentCategories.map((category) => (
                   <span
                     key={category}
-                    className="px-4 py-2 bg-brand-blue/5 text-brand-blue rounded-full text-sm font-medium border border-brand-blue/10"
+                    className="px-4 py-2 bg-brand-primary/5 text-brand-primary rounded-full text-sm font-medium border border-brand-primary/10"
                   >
                     {category}
                   </span>
@@ -373,7 +373,7 @@ export default function Home() {
 
               <Link
                 href="/equipment"
-                className="inline-flex items-center space-x-2 bg-brand-gold text-white px-8 py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-all duration-300 shadow-lg"
+                className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg"
               >
                 <span>View Fleet List</span>
                 <ArrowRight size={18} />
@@ -384,7 +384,7 @@ export default function Home() {
               <div className="space-y-4">
                 <div className="rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/heavy-excavator-digging-day-light.jpg"
+                    src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg"
                     alt="Excavator"
                     width={300}
                     height={200}
@@ -393,7 +393,7 @@ export default function Home() {
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/istockphoto-2191101045-612x612.jpg"
+                    src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg"
                     alt="Construction Equipment"
                     width={300}
                     height={200}
@@ -404,7 +404,7 @@ export default function Home() {
               <div className="space-y-4 pt-8">
                 <div className="rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/istockphoto-2260001304-612x612.jpg"
+                    src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg"
                     alt="Grader"
                     width={300}
                     height={200}
@@ -413,7 +413,7 @@ export default function Home() {
                 </div>
                 <div className="rounded-2xl overflow-hidden shadow-lg">
                   <Image
-                    src="/excavation-work-progress.jpg"
+                    src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg"
                     alt="Excavation Work"
                     width={300}
                     height={200}
@@ -426,14 +426,94 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
+      {/* Featured Projects */}
+      <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Our Work</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
+              Featured Projects
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Major infrastructure projects we are currently executing across Tanzania
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Julius Nyerere Hydropower Plant",
+                location: "Stigler's Gorge, Morogoro",
+                description: "2115MW hydropower plant construction",
+                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+              },
+              {
+                title: "Standard Gauge Railway",
+                location: "Dar es Salaam - Tabora",
+                description: "1,016km railway construction",
+                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+              },
+              {
+                title: "Kabulo-Kiwira Coal Mine",
+                location: "Kiwira-Ileje District",
+                description: "Coal mining and power plant project",
+                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg",
+              },
+            ].map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-4 left-4 text-white">
+                    <p className="text-sm opacity-90">{project.location}</p>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-brand-dark mb-2 font-heading">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-600 text-sm">{project.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/projects"
+              className="inline-flex items-center space-x-2 border-2 border-brand-primary text-brand-primary px-8 py-4 rounded-lg font-semibold hover:bg-brand-primary hover:text-white transition-all duration-300"
+            >
+              <span>View All Projects</span>
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </SectionWrapper>
+
       {/* How We Work - Process */}
       <SectionWrapper className="py-20 lg:py-28 bg-brand-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 text-brand-light font-medium mb-4">
-              <div className="w-8 h-0.5 bg-brand-gold" />
+            <div className="inline-flex items-center space-x-2 text-brand-primary-light font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
               <span className="uppercase tracking-wide text-sm">Our Process</span>
-              <div className="w-8 h-0.5 bg-brand-gold" />
+              <div className="w-8 h-0.5 bg-brand-secondary" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
               Our Project Process
@@ -453,13 +533,13 @@ export default function Home() {
                 transition={{ delay: index * 0.1 }}
                 className="relative text-center"
               >
-                <div className="w-16 h-16 bg-brand-blue rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-3">
-                  <span className="text-2xl font-bold text-brand-gold">{step.number}</span>
+                <div className="w-16 h-16 bg-brand-primary rounded-2xl flex items-center justify-center mx-auto mb-4 transform rotate-3">
+                  <span className="text-2xl font-bold text-brand-secondary">{step.number}</span>
                 </div>
                 <h3 className="text-lg font-bold mb-2 font-heading">{step.title}</h3>
                 <p className="text-gray-400 text-sm">{step.description}</p>
                 {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-gradient-to-r from-brand-blue to-transparent" />
+                  <div className="hidden md:block absolute top-8 left-[60%] w-full h-0.5 bg-gradient-to-r from-brand-primary to-transparent" />
                 )}
               </motion.div>
             ))}
@@ -486,8 +566,8 @@ export default function Home() {
             </div>
 
             <div className="bg-white rounded-2xl p-8 lg:p-10 shadow-lg">
-              <div className="w-14 h-14 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-6">
-                <CheckCircle size={28} className="text-brand-blue" />
+              <div className="w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-6">
+                <CheckCircle size={28} className="text-brand-primary" />
               </div>
               <h3 className="text-2xl font-bold text-brand-dark mb-4 font-heading">
                 Quality Assurance
@@ -503,10 +583,10 @@ export default function Home() {
       </SectionWrapper>
 
       {/* CTA Banner */}
-      <SectionWrapper className="py-20 lg:py-28 bg-brand-blue relative overflow-hidden">
+      <SectionWrapper className="py-20 lg:py-28 bg-brand-primary relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <Image
-            src="/view-modern-construction-site.jpg"
+            src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (1).jpeg"
             alt="Background"
             fill
             className="object-cover"
@@ -531,7 +611,7 @@ export default function Home() {
             </a>
             <a
               href="tel:0713057706"
-              className="inline-flex items-center justify-center space-x-2 bg-white text-brand-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
+              className="inline-flex items-center justify-center space-x-2 bg-white text-brand-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
             >
               <Phone size={20} />
               <span>Call Now</span>

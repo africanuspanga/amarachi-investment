@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -8,7 +9,6 @@ import {
   CheckCircle,
   Download,
   Settings,
-  ImageIcon,
   ExternalLink,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
@@ -70,14 +70,51 @@ const equipment = [
   { id: 39, name: "Semi Tipper Hongyan", code: "T 209 DYB", category: "Trailers", specs: "Semi Tipper Trailer", status: "Available" },
 ];
 
-// Image Placeholder Component
-function ImagePlaceholder({ text = "Image Coming Soon" }: { text?: string }) {
-  return (
-    <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center text-gray-400 h-48 w-full">
-      <ImageIcon size={40} className="mb-2 opacity-50" />
-      <span className="text-xs font-medium text-center px-2">{text}</span>
-    </div>
-  );
+// Equipment images mapping - using real equipment images
+const equipmentImages: Record<string, string[]> = {
+  Trucks: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg",
+  ],
+  Excavators: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
+  ],
+  Loaders: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
+  ],
+  Graders: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+  ],
+  Pickups: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg",
+  ],
+  Backhoes: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (1).jpeg",
+  ],
+  Rollers: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (2).jpeg",
+  ],
+  default: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (2).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (2).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (3).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (2).jpeg",
+  ],
+};
+
+function getEquipmentImage(category: string, index: number): string {
+  const images = equipmentImages[category] || equipmentImages.default;
+  return images[index % images.length];
 }
 
 export default function EquipmentPage() {
@@ -93,7 +130,7 @@ export default function EquipmentPage() {
       <PageHero
         title="Equipment & Fleet"
         subtitle="Modern machinery and transport vehicles ready for your project"
-        backgroundImage="/excavation-work-progress.jpg"
+        backgroundImage="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (2).jpeg"
       />
 
       {/* Intro */}
@@ -118,7 +155,7 @@ export default function EquipmentPage() {
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 ${
                   activeCategory === category
-                    ? "bg-brand-blue text-white shadow-lg"
+                    ? "bg-brand-primary text-white shadow-lg"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
@@ -145,9 +182,15 @@ export default function EquipmentPage() {
                   transition={{ delay: index * 0.03 }}
                   className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
                 >
-                  <div className="relative h-48 overflow-hidden p-4">
-                    <ImagePlaceholder text={`${item.code} - Image Coming Soon`} />
-                    <div className="absolute top-6 right-6">
+                  <div className="relative h-48 overflow-hidden">
+                    <Image
+                      src={getEquipmentImage(item.category, index)}
+                      alt={item.name}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                    <div className="absolute top-4 right-4">
                       <span
                         className={`px-3 py-1 rounded-full text-xs font-semibold ${
                           item.status === "Available"
@@ -158,19 +201,21 @@ export default function EquipmentPage() {
                         {item.status}
                       </span>
                     </div>
+                    <div className="absolute bottom-4 left-4">
+                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-brand-primary rounded-full text-xs font-semibold">
+                        {item.category}
+                      </span>
+                    </div>
                   </div>
                   <div className="p-5">
-                    <span className="text-xs font-medium text-brand-blue uppercase tracking-wide">
-                      {item.category}
-                    </span>
                     <h3 className="text-lg font-bold text-brand-dark mt-1 mb-1 font-heading">
                       {item.name}
                     </h3>
-                    <p className="text-brand-gold font-semibold text-sm mb-2">{item.code}</p>
+                    <p className="text-brand-secondary font-semibold text-sm mb-2">{item.code}</p>
                     <p className="text-gray-500 text-sm mb-4">{item.specs}</p>
                     <Link
                       href={`/contact?subject=Hire ${item.name} (${item.code})`}
-                      className="inline-flex items-center space-x-1 text-brand-gold font-semibold text-sm hover:text-yellow-600 transition-colors"
+                      className="inline-flex items-center space-x-1 text-brand-primary font-semibold text-sm hover:text-brand-secondary transition-colors"
                     >
                       <span>Hire This Equipment</span>
                       <ArrowRight size={16} />
@@ -193,7 +238,7 @@ export default function EquipmentPage() {
       {/* Download Section */}
       <SectionWrapper className="py-16 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-blue rounded-2xl p-8 lg:p-12 text-center text-white">
+          <div className="bg-brand-primary rounded-2xl p-8 lg:p-12 text-center text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4 font-heading">
               Need the Complete Equipment List?
             </h2>
@@ -205,7 +250,7 @@ export default function EquipmentPage() {
               href="https://docs.google.com/spreadsheets/d/11_IvmHP2w7IHUg6-AUVHXAolEWIppVjx/edit?usp=sharing&ouid=111485313206214396180&rtpof=true&sd=true"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-white text-brand-blue px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
+              className="inline-flex items-center space-x-2 bg-white text-brand-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
             >
               <Download size={20} />
               <span>Download Full Equipment List</span>
@@ -215,13 +260,62 @@ export default function EquipmentPage() {
         </div>
       </SectionWrapper>
 
-      {/* Why Choose Our Equipment */}
+      {/* Equipment Gallery */}
       <SectionWrapper className="py-20 lg:py-28 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Gallery</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
+              Our Equipment in Action
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Real photos of our machinery and fleet at work sites across Tanzania
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
+              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+            ].map((src, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.05 }}
+                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+              >
+                <Image
+                  src={src}
+                  alt={`Equipment ${index + 1}`}
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/20 transition-colors duration-300" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Why Choose Our Equipment */}
+      <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <div className="inline-flex items-center space-x-2 text-brand-blue font-medium mb-4">
-                <div className="w-8 h-0.5 bg-brand-gold" />
+              <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+                <div className="w-8 h-0.5 bg-brand-secondary" />
                 <span className="uppercase tracking-wide text-sm">Why Choose Us</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6 font-heading">
@@ -241,16 +335,22 @@ export default function EquipmentPage() {
                   "GPS tracking on all equipment",
                 ].map((item) => (
                   <li key={item} className="flex items-center space-x-3">
-                    <CheckCircle size={20} className="text-brand-gold flex-shrink-0" />
+                    <CheckCircle size={20} className="text-brand-secondary flex-shrink-0" />
                     <span className="text-gray-700">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
             <div className="relative">
-              <div className="absolute -inset-4 bg-brand-gold/10 rounded-3xl transform -rotate-2" />
+              <div className="absolute -inset-4 bg-brand-secondary/10 rounded-3xl transform -rotate-2" />
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <ImagePlaceholder text="Equipment Images Coming Soon" />
+                <Image
+                  src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg"
+                  alt="Equipment at work"
+                  width={600}
+                  height={400}
+                  className="object-cover w-full"
+                />
               </div>
             </div>
           </div>

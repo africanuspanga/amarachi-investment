@@ -5,10 +5,11 @@
 @tailwind utilities;
 
 :root {
-  --brand-blue: #1E5A8A;
-  --brand-light: #3FA9D6;
-  --brand-gold: #D4A017;
-  --brand-dark: #2B2B2B;
+  --brand-primary: #01538c;
+  --brand-secondary: #ef0027;
+  --brand-primary-light: #0277bd;
+  --brand-secondary-light: #ff1744;
+  --brand-dark: #1a1a1a;
   --brand-white: #FFFFFF;
 }
 
@@ -42,12 +43,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--brand-blue);
+  background: var(--brand-primary);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #164a70;
+  background: #014070;
 }
 
 /* Animation utilities */
@@ -68,9 +69,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Button styles */
 .btn-primary {
-  @apply bg-brand-gold text-white font-semibold px-6 py-3 rounded-lg hover:bg-yellow-600 transition-all duration-300 shadow-lg;
+  @apply bg-brand-secondary text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 transition-all duration-300 shadow-lg;
 }
 
 .btn-secondary {
-  @apply border-2 border-brand-blue text-brand-blue font-semibold px-6 py-3 rounded-lg hover:bg-brand-blue hover:text-white transition-all duration-300;
+  @apply border-2 border-brand-primary text-brand-primary font-semibold px-6 py-3 rounded-lg hover:bg-brand-primary hover:text-white transition-all duration-300;
 }

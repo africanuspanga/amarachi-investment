@@ -23,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/amarachi amarachi favicon.png" type="image/png" />
+        <link rel="icon" href="/new original favicon.png" type="image/png" />
       </head>
       <body className="antialiased">
         <Navbar />

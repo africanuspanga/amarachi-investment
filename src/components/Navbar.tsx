@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
   { name: "Equipment", href: "/equipment" },
   { name: "Contact", href: "/contact" },
 ];
@@ -37,10 +38,10 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <div className="relative w-12 h-12 sm:w-14 sm:h-14">
+          <Link href="/" className="flex items-center space-x-3">
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16">
               <Image
-                src="/amarachi logo.png"
+                src="/new original logo.png"
                 alt="Amarachi Investment Logo"
                 fill
                 className="object-contain"
@@ -48,10 +49,10 @@ export default function Navbar() {
               />
             </div>
             <div className="hidden sm:block">
-              <h1 className="text-sm font-bold text-brand-blue leading-tight font-heading">
+              <h1 className="text-sm font-bold text-brand-primary leading-tight font-heading">
                 AMARACHI INVESTMENT
               </h1>
-              <p className="text-[10px] text-brand-gold uppercase tracking-wide">
+              <p className="text-[10px] text-brand-secondary uppercase tracking-wide">
                 Civil & Building Contractors
               </p>
             </div>
@@ -63,10 +64,10 @@ export default function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-brand-dark hover:text-brand-blue transition-colors relative group"
+                className="text-sm font-medium text-brand-dark hover:text-brand-primary transition-colors relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-gold transition-all duration-300 group-hover:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand-secondary transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>
@@ -75,14 +76,14 @@ export default function Navbar() {
           <div className="hidden lg:flex items-center space-x-4">
             <a
               href="tel:0713057706"
-              className="flex items-center space-x-2 text-brand-blue hover:text-brand-gold transition-colors"
+              className="flex items-center space-x-2 text-brand-primary hover:text-brand-secondary transition-colors"
             >
               <Phone size={18} />
               <span className="text-sm font-medium">0713 057706</span>
             </a>
             <Link
               href="/contact"
-              className="bg-brand-gold text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-yellow-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="bg-brand-secondary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Request a Quote
             </Link>
@@ -91,7 +92,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 text-brand-dark hover:text-brand-blue transition-colors"
+            className="lg:hidden p-2 text-brand-dark hover:text-brand-primary transition-colors"
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -113,7 +114,7 @@ export default function Navbar() {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-3 px-4 text-brand-dark hover:bg-brand-blue/5 hover:text-brand-blue rounded-lg font-medium transition-colors"
+                  className="block py-3 px-4 text-brand-dark hover:bg-brand-primary/5 hover:text-brand-primary rounded-lg font-medium transition-colors"
                 >
                   {link.name}
                 </Link>
@@ -121,7 +122,7 @@ export default function Navbar() {
               <div className="pt-4 border-t mt-4">
                 <a
                   href="tel:0713057706"
-                  className="flex items-center space-x-2 py-3 px-4 text-brand-blue"
+                  className="flex items-center space-x-2 py-3 px-4 text-brand-primary"
                 >
                   <Phone size={18} />
                   <span className="font-medium">0713 057706</span>
@@ -129,7 +130,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="block mt-2 bg-brand-gold text-white text-center px-5 py-3 rounded-lg font-semibold hover:bg-yellow-600 transition-colors"
+                  className="block mt-2 bg-brand-secondary text-white text-center px-5 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
                 >
                   Request a Quote
                 </Link>

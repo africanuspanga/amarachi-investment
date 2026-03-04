@@ -17,11 +17,11 @@ export default function PageHero({ title, subtitle, backgroundImage }: PageHeroP
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${backgroundImage})` }}
         >
-          <div className="absolute inset-0 bg-brand-blue/90" />
+          <div className="absolute inset-0 bg-brand-primary/90" />
         </div>
       )}
       {!backgroundImage && (
-        <div className="absolute inset-0 bg-gradient-to-br from-brand-blue to-brand-light" />
+        <div className="absolute inset-0 bg-gradient-to-br from-brand-primary to-brand-primary-light" />
       )}
 
       {/* Content */}

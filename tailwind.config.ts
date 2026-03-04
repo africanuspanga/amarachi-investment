@@ -10,11 +10,16 @@ const config: Config = {
     extend: {
       colors: {
         brand: {
-          blue: "#1E5A8A",
-          light: "#3FA9D6",
-          gold: "#D4A017",
-          dark: "#2B2B2B",
+          primary: "#01538c",
+          "primary-light": "#0277bd",
+          secondary: "#ef0027",
+          "secondary-light": "#ff1744",
+          dark: "#1a1a1a",
           white: "#FFFFFF",
+          // Legacy aliases for backward compatibility during transition
+          blue: "#01538c",
+          light: "#0277bd",
+          gold: "#ef0027",
         },
       },
       fontFamily: {

@@ -89,7 +89,7 @@ export default function ContactPage() {
       <PageHero
         title="Contact Us"
         subtitle="Request a quote, book a site visit, or ask about equipment availability"
-        backgroundImage="/view-modern-construction-site.jpg"
+        backgroundImage="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (2).jpeg"
       />
 
       {/* Contact Cards */}
@@ -105,8 +105,8 @@ export default function ContactPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white rounded-2xl p-8 shadow-xl border border-gray-100"
               >
-                <div className="w-14 h-14 bg-brand-blue/10 rounded-xl flex items-center justify-center mb-5">
-                  <item.icon size={28} className="text-brand-blue" />
+                <div className="w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-5">
+                  <item.icon size={28} className="text-brand-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-brand-dark mb-3 font-heading">
                   {item.title}
@@ -114,7 +114,7 @@ export default function ContactPage() {
                 {item.href ? (
                   <a
                     href={item.href}
-                    className="text-gray-600 whitespace-pre-line hover:text-brand-blue transition-colors"
+                    className="text-gray-600 whitespace-pre-line hover:text-brand-primary transition-colors"
                   >
                     {item.content}
                   </a>
@@ -173,7 +173,7 @@ export default function ContactPage() {
                         value={formData.fullName}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                         placeholder="John Doe"
                       />
                     </div>
@@ -191,7 +191,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all"
+                        className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                         placeholder="0713 057706"
                       />
                     </div>
@@ -210,7 +210,7 @@ export default function ContactPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                       placeholder="john@example.com"
                     />
                   </div>
@@ -228,7 +228,7 @@ export default function ContactPage() {
                       value={formData.service}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
                     >
                       <option value="">Select a service...</option>
                       {serviceOptions.map((option) => (
@@ -253,7 +253,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-blue focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all resize-none"
                       placeholder="Tell us about your project..."
                     />
                   </div>
@@ -261,7 +261,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-brand-gold text-white py-4 rounded-lg font-semibold hover:bg-yellow-600 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-brand-secondary text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
@@ -296,7 +296,7 @@ export default function ContactPage() {
               </div>
 
               {/* Quick Contact Options */}
-              <div className="bg-brand-blue rounded-2xl p-8 text-white">
+              <div className="bg-brand-primary rounded-2xl p-8 text-white">
                 <h3 className="text-xl font-bold mb-6 font-heading">
                   Prefer to Talk Directly?
                 </h3>
@@ -337,8 +337,8 @@ export default function ContactPage() {
       {/* Working Hours */}
       <SectionWrapper className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="w-16 h-16 bg-brand-gold/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-            <Clock size={32} className="text-brand-gold" />
+          <div className="w-16 h-16 bg-brand-secondary/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
+            <Clock size={32} className="text-brand-secondary" />
           </div>
           <h2 className="text-2xl md:text-3xl font-bold text-brand-dark mb-4 font-heading">
             Working Hours

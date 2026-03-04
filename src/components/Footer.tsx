@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail } from "lucide-react";
 
 const quickLinks = [
   { name: "Home", href: "/" },
   { name: "About Us", href: "/about" },
   { name: "Services", href: "/services" },
+  { name: "Projects", href: "/projects" },
   { name: "Equipment", href: "/equipment" },
   { name: "Contact", href: "/contact" },
 ];
@@ -28,10 +29,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="relative w-12 h-12">
+            <Link href="/" className="flex items-center space-x-3">
+              <div className="relative w-14 h-14">
                 <Image
-                  src="/amarachi logo.png"
+                  src="/new original logo.png"
                   alt="Amarachi Investment Logo"
                   fill
                   className="object-contain"
@@ -41,7 +42,7 @@ export default function Footer() {
                 <h3 className="text-sm font-bold leading-tight">
                   AMARACHI INVESTMENT
                 </h3>
-                <p className="text-[10px] text-brand-gold uppercase">
+                <p className="text-[10px] text-brand-secondary uppercase">
                   Civil & Building Contractors
                 </p>
               </div>
@@ -54,7 +55,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-brand-gold">Quick Links</h4>
+            <h4 className="text-lg font-semibold mb-4 text-brand-secondary">Quick Links</h4>
             <ul className="space-y-2">
               {quickLinks.map((link) => (
                 <li key={link.name}>
@@ -71,7 +72,7 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-brand-gold">Our Services</h4>
+            <h4 className="text-lg font-semibold mb-4 text-brand-secondary">Our Services</h4>
             <ul className="space-y-2">
               {serviceLinks.map((link) => (
                 <li key={link.name}>
@@ -88,24 +89,24 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold mb-4 text-brand-gold">Contact Us</h4>
+            <h4 className="text-lg font-semibold mb-4 text-brand-secondary">Contact Us</h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <MapPin size={18} className="text-brand-light mt-0.5 flex-shrink-0" />
+                <MapPin size={18} className="text-brand-primary-light mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
                   Mbezi Beach, Plot No. 2346 Kilongawima<br />
                   P.O. Box 20914, Dar es Salaam, Tanzania
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Phone size={18} className="text-brand-light flex-shrink-0" />
+                <Phone size={18} className="text-brand-primary-light flex-shrink-0" />
                 <span className="text-gray-400 text-sm">
                   0713 057706 / 0713 333177<br />
                   0658 068760
                 </span>
               </li>
               <li className="flex items-center space-x-3">
-                <Mail size={18} className="text-brand-light flex-shrink-0" />
+                <Mail size={18} className="text-brand-primary-light flex-shrink-0" />
                 <a
                   href="mailto:amarachiinvestmentcoltd@gmail.com"
                   className="text-gray-400 hover:text-white transition-colors text-sm"
