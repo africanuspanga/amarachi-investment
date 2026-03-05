@@ -138,7 +138,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                         value={formData.fullName}
                         onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
                         className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent"
-                        placeholder="John Doe"
+                        placeholder="Lucas Msuya"
                       />
                     </div>
                     <div>
@@ -165,7 +165,7 @@ export default function CartModal({ isOpen, onClose }: CartModalProps) {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent"
-                      placeholder="john@example.com"
+                      placeholder="lucas@example.com"
                     />
                   </div>
 

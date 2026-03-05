@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Settings,
@@ -68,6 +69,53 @@ const equipment = [
   { id: 38, name: "Crane XCMG 50TON", code: "T 326 DVM", category: "Cranes", specs: "50 Ton Mobile Crane", status: "Available" },
   { id: 39, name: "Semi Tipper Hongyan", code: "T 209 DYB", category: "Trailers", specs: "Semi Tipper Trailer", status: "Available" },
 ];
+
+// Equipment images mapping - placeholder for future images
+const equipmentImages: Record<string, string[]> = {
+  Trucks: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg",
+  ],
+  Excavators: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
+  ],
+  Loaders: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
+  ],
+  Graders: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+  ],
+  Pickups: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg",
+  ],
+  Backhoes: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (1).jpeg",
+  ],
+  Rollers: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (2).jpeg",
+  ],
+  default: [
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (2).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (2).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (3).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11 (1).jpeg",
+    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (2).jpeg",
+  ],
+};
+
+function getEquipmentImage(category: string, index: number): string {
+  const images = equipmentImages[category] || equipmentImages.default;
+  return images[index % images.length];
+}
 
 export default function EquipmentPage() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -142,7 +190,7 @@ export default function EquipmentPage() {
             ))}
           </div>
 
-          {/* Equipment Cards - No Images */}
+          {/* Equipment Cards - With Image Containers */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -164,12 +212,18 @@ export default function EquipmentPage() {
                       inCart ? "border-green-500" : "border-gray-100"
                     } group`}
                   >
-                    {/* Card Header with Category Badge */}
-                    <div className="bg-gradient-to-r from-brand-primary to-brand-primary-light p-4">
-                      <div className="flex items-center justify-between">
-                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
-                          {item.category}
-                        </span>
+                    {/* Image Container */}
+                    <div className="relative h-48 overflow-hidden bg-gray-100">
+                      <Image
+                        src={getEquipmentImage(item.category, index)}
+                        alt={item.name}
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                      
+                      {/* Status Badge */}
+                      <div className="absolute top-4 right-4">
                         <span
                           className={`px-3 py-1 rounded-full text-xs font-semibold ${
                             item.status === "Available"
@@ -180,16 +234,31 @@ export default function EquipmentPage() {
                           {item.status}
                         </span>
                       </div>
+                      
+                      {/* Category Badge */}
+                      <div className="absolute bottom-4 left-4">
+                        <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-brand-primary rounded-full text-xs font-semibold">
+                          {item.category}
+                        </span>
+                      </div>
+
+                      {/* In Cart Indicator */}
+                      {inCart && (
+                        <div className="absolute top-4 left-4">
+                          <span className="px-3 py-1 bg-green-500 text-white rounded-full text-xs font-semibold flex items-center space-x-1">
+                            <CheckCircle size={12} />
+                            <span>In Cart</span>
+                          </span>
+                        </div>
+                      )}
                     </div>
 
                     {/* Card Content */}
                     <div className="p-5">
-                      <h3 className="text-lg font-bold text-brand-dark mb-1 font-heading">
+                      <h3 className="text-lg font-bold text-brand-dark mt-1 mb-1 font-heading">
                         {item.name}
                       </h3>
-                      <p className="text-brand-secondary font-semibold text-sm mb-2">
-                        {item.code}
-                      </p>
+                      <p className="text-brand-secondary font-semibold text-sm mb-2">{item.code}</p>
                       <p className="text-gray-500 text-sm mb-4">{item.specs}</p>
 
                       {/* Add to Cart Button */}

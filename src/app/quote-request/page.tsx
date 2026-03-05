@@ -199,7 +199,7 @@ export default function QuoteRequestPage() {
                         onChange={handleChange}
                         required
                         className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
-                        placeholder="John Doe"
+                        placeholder="Lucas Msuya"
                       />
                     </div>
                     <div>
@@ -231,7 +231,7 @@ export default function QuoteRequestPage() {
                           value={formData.email}
                           onChange={handleChange}
                           className="w-full pl-10 pr-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-primary focus:border-transparent transition-all"
-                          placeholder="john@example.com"
+                          placeholder="lucas@example.com"
                         />
                       </div>
                     </div>
