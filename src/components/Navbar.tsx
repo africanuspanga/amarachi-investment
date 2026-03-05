@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -15,7 +15,12 @@ const navLinks = [
   { name: "Contact", href: "/contact" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  cartCount?: number;
+  onCartClick?: () => void;
+}
+
+export default function Navbar({ cartCount = 0, onCartClick }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -37,9 +42,9 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3">
-            <div className="relative w-14 h-14 sm:w-16 sm:h-16">
+          {/* Logo - Only logo, no text, bigger */}
+          <Link href="/" className="flex items-center">
+            <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28">
               <Image
                 src="/new original logo.png"
                 alt="Amarachi Investment Logo"
@@ -47,14 +52,6 @@ export default function Navbar() {
                 className="object-contain"
                 priority
               />
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="text-sm font-bold text-brand-primary leading-tight font-heading">
-                AMARACHI INVESTMENT
-              </h1>
-              <p className="text-[10px] text-brand-secondary uppercase tracking-wide">
-                Civil & Building Contractors
-              </p>
             </div>
           </Link>
 
@@ -81,8 +78,22 @@ export default function Navbar() {
               <Phone size={18} />
               <span className="text-sm font-medium">0713 057706</span>
             </a>
+            
+            {/* Cart Button */}
+            {cartCount > 0 && (
+              <button
+                onClick={onCartClick}
+                className="relative p-2 text-brand-primary hover:text-brand-secondary transition-colors"
+              >
+                <ShoppingCart size={22} />
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-brand-secondary text-white text-xs rounded-full flex items-center justify-center font-medium">
+                  {cartCount}
+                </span>
+              </button>
+            )}
+            
             <Link
-              href="/contact"
+              href="/quote-request"
               className="bg-brand-secondary text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-red-700 transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               Request a Quote
@@ -127,8 +138,28 @@ export default function Navbar() {
                   <Phone size={18} />
                   <span className="font-medium">0713 057706</span>
                 </a>
+                
+                {/* Mobile Cart Button */}
+                {cartCount > 0 && onCartClick && (
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      onCartClick();
+                    }}
+                    className="flex items-center justify-between w-full py-3 px-4 text-brand-primary hover:bg-brand-primary/5 rounded-lg"
+                  >
+                    <div className="flex items-center space-x-2">
+                      <ShoppingCart size={18} />
+                      <span className="font-medium">View Cart</span>
+                    </div>
+                    <span className="w-6 h-6 bg-brand-secondary text-white text-xs rounded-full flex items-center justify-center font-medium">
+                      {cartCount}
+                    </span>
+                  </button>
+                )}
+                
                 <Link
-                  href="/contact"
+                  href="/quote-request"
                   onClick={() => setIsOpen(false)}
                   className="block mt-2 bg-brand-secondary text-white text-center px-5 py-3 rounded-lg font-semibold hover:bg-red-700 transition-colors"
                 >

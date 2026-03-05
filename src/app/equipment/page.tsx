@@ -1,18 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  ArrowRight,
-  CheckCircle,
-  Download,
   Settings,
-  ExternalLink,
+  CheckCircle,
+  Plus,
+  ShoppingCart,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionWrapper from "@/components/SectionWrapper";
+import DatePickerModal from "@/components/DatePickerModal";
+import { useCart } from "@/contexts/CartContext";
 
 const categories = [
   "All",
@@ -70,60 +69,35 @@ const equipment = [
   { id: 39, name: "Semi Tipper Hongyan", code: "T 209 DYB", category: "Trailers", specs: "Semi Tipper Trailer", status: "Available" },
 ];
 
-// Equipment images mapping - using real equipment images
-const equipmentImages: Record<string, string[]> = {
-  Trucks: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg",
-  ],
-  Excavators: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
-  ],
-  Loaders: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
-  ],
-  Graders: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
-  ],
-  Pickups: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg",
-  ],
-  Backhoes: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (1).jpeg",
-  ],
-  Rollers: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (2).jpeg",
-  ],
-  default: [
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09 (2).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (2).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10 (3).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11 (1).jpeg",
-    "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13 (2).jpeg",
-  ],
-};
-
-function getEquipmentImage(category: string, index: number): string {
-  const images = equipmentImages[category] || equipmentImages.default;
-  return images[index % images.length];
-}
-
 export default function EquipmentPage() {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedItem, setSelectedItem] = useState<typeof equipment[0] | null>(null);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const { addItem, items } = useCart();
 
   const filteredEquipment =
     activeCategory === "All"
       ? equipment
       : equipment.filter((item) => item.category === activeCategory);
+
+  const handleAddToCart = (item: typeof equipment[0]) => {
+    // Check if item is already in cart
+    if (items.some((cartItem) => cartItem.id === item.id)) {
+      return; // Item already in cart
+    }
+    setSelectedItem(item);
+    setIsDatePickerOpen(true);
+  };
+
+  const handleDateConfirm = (startDate: string, endDate: string) => {
+    if (selectedItem) {
+      addItem(selectedItem, startDate, endDate);
+    }
+  };
+
+  const isItemInCart = (itemId: number) => {
+    return items.some((cartItem) => cartItem.id === itemId);
+  };
 
   return (
     <>
@@ -136,6 +110,10 @@ export default function EquipmentPage() {
       {/* Intro */}
       <SectionWrapper className="py-16 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="inline-flex items-center justify-center space-x-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <ShoppingCart size={16} />
+            <span>Add equipment to cart and request a quote</span>
+          </div>
           <p className="text-xl text-gray-600 leading-relaxed">
             We maintain an extensive fleet to support civil works, hauling, and 
             construction operations. All equipment is regularly serviced and maintained 
@@ -164,7 +142,7 @@ export default function EquipmentPage() {
             ))}
           </div>
 
-          {/* Equipment Cards */}
+          {/* Equipment Cards - No Images */}
           <AnimatePresence mode="wait">
             <motion.div
               key={activeCategory}
@@ -172,57 +150,74 @@ export default function EquipmentPage() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.3 }}
-              className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+              className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
             >
-              {filteredEquipment.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.03 }}
-                  className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 group"
-                >
-                  <div className="relative h-48 overflow-hidden">
-                    <Image
-                      src={getEquipmentImage(item.category, index)}
-                      alt={item.name}
-                      fill
-                      className="object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute top-4 right-4">
-                      <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          item.status === "Available"
-                            ? "bg-green-500 text-white"
-                            : "bg-orange-500 text-white"
+              {filteredEquipment.map((item, index) => {
+                const inCart = isItemInCart(item.id);
+                return (
+                  <motion.div
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.03 }}
+                    className={`bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 ${
+                      inCart ? "border-green-500" : "border-gray-100"
+                    } group`}
+                  >
+                    {/* Card Header with Category Badge */}
+                    <div className="bg-gradient-to-r from-brand-primary to-brand-primary-light p-4">
+                      <div className="flex items-center justify-between">
+                        <span className="px-3 py-1 bg-white/20 backdrop-blur-sm text-white rounded-full text-xs font-semibold">
+                          {item.category}
+                        </span>
+                        <span
+                          className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                            item.status === "Available"
+                              ? "bg-green-500 text-white"
+                              : "bg-orange-500 text-white"
+                          }`}
+                        >
+                          {item.status}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="p-5">
+                      <h3 className="text-lg font-bold text-brand-dark mb-1 font-heading">
+                        {item.name}
+                      </h3>
+                      <p className="text-brand-secondary font-semibold text-sm mb-2">
+                        {item.code}
+                      </p>
+                      <p className="text-gray-500 text-sm mb-4">{item.specs}</p>
+
+                      {/* Add to Cart Button */}
+                      <button
+                        onClick={() => handleAddToCart(item)}
+                        disabled={inCart}
+                        className={`w-full py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 flex items-center justify-center space-x-2 ${
+                          inCart
+                            ? "bg-green-500 text-white cursor-default"
+                            : "bg-brand-secondary text-white hover:bg-red-700 shadow-lg hover:shadow-xl"
                         }`}
                       >
-                        {item.status}
-                      </span>
+                        {inCart ? (
+                          <>
+                            <CheckCircle size={16} />
+                            <span>In Cart</span>
+                          </>
+                        ) : (
+                          <>
+                            <Plus size={16} />
+                            <span>Add to Cart</span>
+                          </>
+                        )}
+                      </button>
                     </div>
-                    <div className="absolute bottom-4 left-4">
-                      <span className="px-3 py-1 bg-white/90 backdrop-blur-sm text-brand-primary rounded-full text-xs font-semibold">
-                        {item.category}
-                      </span>
-                    </div>
-                  </div>
-                  <div className="p-5">
-                    <h3 className="text-lg font-bold text-brand-dark mt-1 mb-1 font-heading">
-                      {item.name}
-                    </h3>
-                    <p className="text-brand-secondary font-semibold text-sm mb-2">{item.code}</p>
-                    <p className="text-gray-500 text-sm mb-4">{item.specs}</p>
-                    <Link
-                      href={`/contact?subject=Hire ${item.name} (${item.code})`}
-                      className="inline-flex items-center space-x-1 text-brand-primary font-semibold text-sm hover:text-brand-secondary transition-colors"
-                    >
-                      <span>Hire This Equipment</span>
-                      <ArrowRight size={16} />
-                    </Link>
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </motion.div>
           </AnimatePresence>
 
@@ -235,127 +230,73 @@ export default function EquipmentPage() {
         </div>
       </section>
 
-      {/* Download Section */}
-      <SectionWrapper className="py-16 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-brand-primary rounded-2xl p-8 lg:p-12 text-center text-white">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 font-heading">
-              Need the Complete Equipment List?
-            </h2>
-            <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-              View and download our full equipment catalog with detailed specifications, 
-              availability, and pricing information.
-            </p>
-            <a
-              href="https://docs.google.com/spreadsheets/d/11_IvmHP2w7IHUg6-AUVHXAolEWIppVjx/edit?usp=sharing&ouid=111485313206214396180&rtpof=true&sd=true"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center space-x-2 bg-white text-brand-primary px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300"
-            >
-              <Download size={20} />
-              <span>Download Full Equipment List</span>
-              <ExternalLink size={16} />
-            </a>
-          </div>
-        </div>
-      </SectionWrapper>
-
-      {/* Equipment Gallery */}
-      <SectionWrapper className="py-20 lg:py-28 bg-white">
+      {/* Why Choose Our Equipment */}
+      <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
               <div className="w-8 h-0.5 bg-brand-secondary" />
-              <span className="uppercase tracking-wide text-sm">Gallery</span>
+              <span className="uppercase tracking-wide text-sm">Why Choose Us</span>
               <div className="w-8 h-0.5 bg-brand-secondary" />
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
-              Our Equipment in Action
+              Quality Equipment, Reliable Service
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
-              Real photos of our machinery and fleet at work sites across Tanzania
-            </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.09.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
-              "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
-            ].map((src, index) => (
+              {
+                title: "Regular Maintenance",
+                desc: "All equipment undergoes regular maintenance and safety inspections",
+              },
+              {
+                title: "Experienced Operators",
+                desc: "Certified operators included with all equipment rentals",
+              },
+              {
+                title: "Flexible Rental Terms",
+                desc: "Daily, weekly, and monthly rental options available",
+              },
+              {
+                title: "24/7 Support",
+                desc: "Round-the-clock support and breakdown assistance",
+              },
+              {
+                title: "GPS Tracking",
+                desc: "All equipment equipped with GPS tracking for security",
+              },
+              {
+                title: "Competitive Rates",
+                desc: "Affordable pricing without compromising on quality",
+              },
+            ].map((item, index) => (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.05 }}
-                className="relative aspect-square rounded-xl overflow-hidden group cursor-pointer"
+                transition={{ delay: index * 0.1 }}
+                className="bg-white rounded-2xl p-6 shadow-lg"
               >
-                <Image
-                  src={src}
-                  alt={`Equipment ${index + 1}`}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-brand-primary/0 group-hover:bg-brand-primary/20 transition-colors duration-300" />
+                <div className="w-12 h-12 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-4">
+                  <CheckCircle size={24} className="text-brand-primary" />
+                </div>
+                <h3 className="text-lg font-bold text-brand-dark mb-2">{item.title}</h3>
+                <p className="text-gray-600 text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </SectionWrapper>
 
-      {/* Why Choose Our Equipment */}
-      <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
-                <div className="w-8 h-0.5 bg-brand-secondary" />
-                <span className="uppercase tracking-wide text-sm">Why Choose Us</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-6 font-heading">
-                Quality Equipment, Reliable Service
-              </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                Our equipment fleet is maintained to the highest standards to ensure 
-                your projects run smoothly and efficiently. We provide experienced 
-                operators with all equipment rentals.
-              </p>
-              <ul className="space-y-4">
-                {[
-                  "Regular maintenance and safety inspections",
-                  "Experienced certified operators included",
-                  "Flexible rental terms - daily, weekly, monthly",
-                  "24/7 support and breakdown assistance",
-                  "GPS tracking on all equipment",
-                ].map((item) => (
-                  <li key={item} className="flex items-center space-x-3">
-                    <CheckCircle size={20} className="text-brand-secondary flex-shrink-0" />
-                    <span className="text-gray-700">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="relative">
-              <div className="absolute -inset-4 bg-brand-secondary/10 rounded-3xl transform -rotate-2" />
-              <div className="relative rounded-2xl overflow-hidden shadow-xl">
-                <Image
-                  src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg"
-                  alt="Equipment at work"
-                  width={600}
-                  height={400}
-                  className="object-cover w-full"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </SectionWrapper>
+      {/* Date Picker Modal */}
+      <DatePickerModal
+        isOpen={isDatePickerOpen}
+        onClose={() => setIsDatePickerOpen(false)}
+        onConfirm={handleDateConfirm}
+        itemName={selectedItem?.name || ""}
+      />
     </>
   );
 }

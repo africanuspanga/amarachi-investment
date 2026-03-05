@@ -27,24 +27,16 @@ export default function Footer() {
       {/* Main Footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Company Info */}
+          {/* Company Info - Only Logo */}
           <div className="space-y-4">
-            <Link href="/" className="flex items-center space-x-3">
-              <div className="relative w-14 h-14">
+            <Link href="/" className="flex items-center justify-center md:justify-start">
+              <div className="relative w-24 h-24 lg:w-32 lg:h-32">
                 <Image
                   src="/new original logo.png"
                   alt="Amarachi Investment Logo"
                   fill
                   className="object-contain"
                 />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold leading-tight">
-                  AMARACHI INVESTMENT
-                </h3>
-                <p className="text-[10px] text-brand-secondary uppercase">
-                  Civil & Building Contractors
-                </p>
               </div>
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed">

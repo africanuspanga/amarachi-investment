@@ -65,8 +65,18 @@ export default function ContactPage() {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    // Format the message for WhatsApp
+    let message = `*Contact Form Submission*\n\n`;
+    message += `*Name:* ${formData.fullName}\n`;
+    message += `*Phone:* ${formData.phone}\n`;
+    if (formData.email) message += `*Email:* ${formData.email}\n`;
+    message += `*Service Needed:* ${formData.service}\n\n`;
+    message += `*Message:*\n${formData.message}`;
+
+    // Encode and open WhatsApp
+    const phoneNumber = "255713057706";
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, "_blank");
 
     setIsSubmitting(false);
     setIsSubmitted(true);
@@ -151,9 +161,9 @@ export default function ContactPage() {
                   <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <CheckCircle size={32} className="text-green-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-green-800 mb-2">Thank You!</h3>
+                  <h3 className="text-xl font-bold text-green-800 mb-2">Opening WhatsApp...</h3>
                   <p className="text-green-700">
-                    Our team will contact you shortly.
+                    Your message will be sent via WhatsApp.
                   </p>
                 </motion.div>
               ) : (
@@ -261,17 +271,17 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-brand-secondary text-white py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                    className="w-full bg-green-600 text-white py-4 rounded-lg font-semibold hover:bg-green-700 transition-all duration-300 flex items-center justify-center space-x-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                        <span>Sending...</span>
+                        <span>Opening WhatsApp...</span>
                       </>
                     ) : (
                       <>
                         <Send size={18} />
-                        <span>Send Message</span>
+                        <span>Send via WhatsApp</span>
                       </>
                     )}
                   </button>

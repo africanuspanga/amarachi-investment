@@ -3,6 +3,8 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import { CartProvider } from "@/contexts/CartContext";
+import ClientCartWrapper from "@/components/ClientCartWrapper";
 
 export const metadata: Metadata = {
   title: "Amarachi Investment Company Ltd | Civil, Building & Transport Tanzania",
@@ -26,10 +28,11 @@ export default function RootLayout({
         <link rel="icon" href="/new original favicon.png" type="image/png" />
       </head>
       <body className="antialiased">
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
-        <WhatsAppButton />
+        <CartProvider>
+          <ClientCartWrapper>
+            {children}
+          </ClientCartWrapper>
+        </CartProvider>
       </body>
     </html>
   );

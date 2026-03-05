@@ -24,7 +24,7 @@ const services = [
     icon: Construction,
     title: "Civil Engineering Works",
     description: "Comprehensive civil engineering solutions for infrastructure development",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+    image: "/excavation-work-progress.jpg",
     features: [
       "Earthworks & excavation",
       "Road works & rehabilitation",
@@ -37,7 +37,7 @@ const services = [
     icon: Building2,
     title: "Building Construction",
     description: "Quality construction services for various building types",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.11.jpeg",
+    image: "/view-modern-construction-site.jpg",
     features: [
       "Residential & commercial buildings",
       "Industrial facilities",
@@ -49,7 +49,7 @@ const services = [
     icon: Truck,
     title: "Transportation & Logistics",
     description: "Reliable transport solutions for construction and project needs",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.07.jpeg",
+    image: "/heavy-excavator-digging-day-light.jpg",
     features: [
       "Construction material haulage",
       "Heavy cargo transportation",
@@ -61,7 +61,7 @@ const services = [
     icon: Settings,
     title: "Equipment & Machinery Supply",
     description: "Heavy equipment leasing and operation services",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.12.jpeg",
+    image: "/excavator-digging-ground-day-light.jpg",
     features: [
       "Equipment leasing with operator",
       "Short and long-term hire",
@@ -73,7 +73,7 @@ const services = [
     icon: MapPin,
     title: "ECTS Tracking System",
     description: "Advanced fleet and equipment monitoring solutions",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.13.jpeg",
+    image: "/istockphoto-1489320181-612x612.jpg",
     features: [
       "Real-time equipment visibility",
       "Fuel monitoring",
@@ -86,7 +86,7 @@ const services = [
     icon: TrendingUp,
     title: "Project Mobilization & Support",
     description: "Rapid deployment and support for your projects",
-    image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+    image: "/african-american-worker-standing-uniform-wearing-safety-hat-factory.jpg",
     features: [
       "Rapid deployment of machines and crews",
       "Flexible scheduling",
@@ -124,7 +124,7 @@ export default function ServicesPage() {
       <PageHero
         title="Our Services"
         subtitle="Complete solutions for construction, transport, and equipment"
-        backgroundImage="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.08.jpeg"
+        backgroundImage="/istockphoto-2191101045-612x612.jpg"
       />
 
       {/* Services Grid */}
@@ -145,7 +145,7 @@ export default function ServicesPage() {
                         alt={service.title}
                         width={600}
                         height={400}
-                        className="object-cover w-full h-80"
+                        className="object-cover w-full h-64 sm:h-80"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 to-transparent" />
                       <div className="absolute bottom-6 left-6">
@@ -161,7 +161,7 @@ export default function ServicesPage() {
                       <div className="w-8 h-0.5 bg-brand-secondary" />
                       <span className="uppercase tracking-wide text-sm">Service {String(index + 1).padStart(2, "0")}</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
                       {service.title}
                     </h2>
                     <p className="text-gray-600 text-lg mb-6">{service.description}</p>
@@ -174,7 +174,7 @@ export default function ServicesPage() {
                       ))}
                     </ul>
                     <Link
-                      href="/contact"
+                      href="/quote-request"
                       className="inline-flex items-center space-x-2 text-brand-primary font-semibold hover:text-brand-secondary transition-colors"
                     >
                       <span>Request a Quote</span>
@@ -197,7 +197,7 @@ export default function ServicesPage() {
               <span className="uppercase tracking-wide text-sm">Why Us</span>
               <div className="w-8 h-0.5 bg-brand-secondary" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
               Why Choose Amarachi
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -205,7 +205,7 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {whyChooseUs.map((item, index) => (
               <motion.div
                 key={item.title}
@@ -213,7 +213,7 @@ export default function ServicesPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+                className="bg-white rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="w-14 h-14 bg-brand-primary/10 rounded-xl flex items-center justify-center mb-6">
                   <item.icon size={28} className="text-brand-primary" />
@@ -237,7 +237,7 @@ export default function ServicesPage() {
                 <div className="w-8 h-0.5 bg-brand-secondary" />
                 <span className="uppercase tracking-wide text-sm">TRA Authorized</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 font-heading">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 font-heading">
                 Electronic Cargo Tracking System (ECTS)
               </h2>
               <p className="text-gray-300 text-lg leading-relaxed mb-6">
@@ -259,8 +259,8 @@ export default function ServicesPage() {
                 ))}
               </div>
               <Link
-                href="/contact"
-                className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300"
+                href="/quote-request"
+                className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 text-sm sm:text-base"
               >
                 <span>Get ECTS Solution</span>
                 <ArrowRight size={18} />
@@ -270,11 +270,11 @@ export default function ServicesPage() {
               <div className="absolute -inset-4 bg-brand-primary/20 rounded-3xl transform rotate-2" />
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <Image
-                  src="/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15 (1).jpeg"
+                  src="/istockphoto-1665924932-612x612.jpg"
                   alt="ECTS Tracking"
                   width={600}
                   height={400}
-                  className="object-cover w-full"
+                  className="object-cover w-full h-64 sm:h-80"
                 />
               </div>
             </div>
@@ -285,15 +285,15 @@ export default function ServicesPage() {
       {/* CTA Section */}
       <SectionWrapper className="py-20 lg:py-28 bg-brand-primary">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-heading">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 font-heading">
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-white/80 mb-10">
+          <p className="text-lg sm:text-xl text-white/80 mb-10">
             Contact us today to discuss your requirements and get a customized quote.
           </p>
           <Link
-            href="/contact"
-            className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-10 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg"
+            href="/quote-request"
+            className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-8 sm:px-10 py-3 sm:py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg text-sm sm:text-base"
           >
             <span>Request a Quote</span>
             <ArrowRight size={18} />
