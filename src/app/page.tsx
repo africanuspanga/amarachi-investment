@@ -17,7 +17,11 @@ import {
   Construction,
   MapPin,
   Settings,
-  TrendingUp,
+  Gem,
+  Mountain,
+  Layers,
+  CircleDot,
+  Radio,
 } from "lucide-react";
 import ServiceCard from "@/components/ServiceCard";
 import SectionWrapper from "@/components/SectionWrapper";
@@ -30,34 +34,34 @@ const heroHighlights = [
 
 const services = [
   {
-    title: "Civil Engineering Works",
-    description: "Earthworks, roads, drainage, and infrastructure support.",
+    title: "Mining",
+    description: "Licensed mining operations for industrial materials including feldspar, dolomite, and aggregates with open pit and underground expertise.",
+    icon: HardHat,
+    image: "/Equipments Images/Mining.jpg",
+  },
+  {
+    title: "Civil & Building Contractors",
+    description: "Earthworks, roads, drainage, and residential, commercial, and industrial construction.",
     icon: Construction,
+    image: "/Equipments Images/Civil construction.jpg",
   },
   {
-    title: "Building Construction",
-    description: "Residential, commercial, and industrial projects.",
-    icon: Building2,
-  },
-  {
-    title: "Transportation & Logistics",
-    description: "Materials haulage, heavy cargo, and project logistics.",
-    icon: Truck,
-  },
-  {
-    title: "Equipment & Machinery Supply",
-    description: "Excavators, loaders, graders, dozers, rollers, and more.",
+    title: "Equipment Rental",
+    description: "Excavators, loaders, graders, dozers, rollers, and more with experienced operators.",
     icon: Settings,
+    image: "/Equipments Images/Equipment-rental.jpeg",
   },
   {
-    title: "ECTS Tracking System",
-    description: "Real-time monitoring for equipment security and productivity.",
-    icon: MapPin,
+    title: "Transportation",
+    description: "Materials haulage, heavy cargo, and project logistics across Tanzania.",
+    icon: Truck,
+    image: "/Equipments Images/Transportation.jpeg",
   },
   {
-    title: "Project Support & Mobilization",
-    description: "Fast deployment of teams, machines, and transport to site.",
-    icon: TrendingUp,
+    title: "ECTS Tracking",
+    description: "TRA-authorized Electronic Cargo Tracking System for real-time fleet and cargo monitoring across Tanzania.",
+    icon: Radio,
+    image: "/Equipments Images/ECTS.jpeg",
   },
 ];
 
@@ -142,9 +146,7 @@ export default function Home() {
                 <span className="text-brand-secondary">Moving Progress.</span>
               </h1>
               <p className="text-lg text-gray-300 mb-8 max-w-xl leading-relaxed">
-                Amarachi Investment Company Ltd delivers dependable civil works, 
-                building construction, transportation logistics, and heavy equipment 
-                solutions across Tanzania.
+                Amarachi delivers dependable civil works, building construction, logistics, and heavy equipment solutions across Tanzania.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link
@@ -308,6 +310,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
+
       {/* Services Preview */}
       <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -337,6 +340,101 @@ export default function Home() {
               className="inline-flex items-center space-x-2 bg-brand-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-dark transition-all duration-300"
             >
               <span>Explore All Services</span>
+              <ArrowRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Mining Expertise */}
+      <SectionWrapper className="py-20 lg:py-28 bg-brand-dark text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/40 to-transparent" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-brand-primary-light font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Mining Sector</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+              Mining Expertise & Licenses
+            </h2>
+            <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+              Mining of industrial materials is one of the business activities generating 
+              significant revenue for Amarachi. We hold several <strong className="text-white">Primary Mining Licenses (PMLs)</strong> for 
+              different materials, demonstrating our active involvement and strength in the mining sector.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Gem,
+                title: "Feldspar",
+                description: "Licensed extraction and processing of feldspar for industrial and ceramic applications.",
+                image: "/mining/Feldspar.jpg",
+              },
+              {
+                icon: Mountain,
+                title: "Dolomite",
+                description: "Primary Mining License for dolomite mining used in construction and manufacturing.",
+                image: "/mining/Dolomite.webp",
+              },
+              {
+                icon: Layers,
+                title: "Aggregates",
+                description: "Licensed quarry operations producing high-quality aggregates for building and infrastructure.",
+                image: "/mining/Aggregates.jpg",
+              },
+              {
+                icon: CircleDot,
+                title: "Other Industrial Materials",
+                description: "Additional PMLs covering various industrial minerals and raw materials.",
+                image: "/mining/other industrial materials.jpg",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 backdrop-blur-sm rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 hover:border-brand-secondary/30 transition-all duration-300 group flex flex-col"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
+                      <item.icon size={24} className="text-white" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 lg:p-8 flex-1">
+                  <h3 className="text-xl font-bold mb-3 font-heading text-white">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/services"
+              className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg"
+            >
+              <span>Explore Our Services</span>
               <ArrowRight size={18} />
             </Link>
           </div>
@@ -446,22 +544,28 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8">
             {[
               {
-                title: "Julius Nyerere Hydropower Plant",
-                location: "Stigler's Gorge, Morogoro",
-                description: "2115MW hydropower plant construction",
-                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.10.jpeg",
+                id: 1,
+                title: "Julius Nyerere Hydropower Plant and Dam",
+                location: "Stigler's Gorge Area, Morogoro",
+                description: "Amarachi serves as a subcontractor supporting excavation, backfilling, concrete transportation, and steel reinforcement for Tanzania's largest energy infrastructure project.",
+                image: "/projects images/Julius Nyerere Power Plant.png",
+                role: "Subcontractor",
               },
               {
-                title: "Standard Gauge Railway",
-                location: "Dar es Salaam - Tabora",
-                description: "1,016km railway construction",
-                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.14.jpeg",
+                id: 2,
+                title: "Standard Gauge Railway — SGR",
+                location: "Dar es Salaam to Tabora",
+                description: "Amarachi contributes as a subcontractor on the SGR project, supporting excavation, concrete transportation, steel reinforcement, and construction activities.",
+                image: "/projects images/Standard Gauge Railway — SGR.jpg",
+                role: "Subcontractor",
               },
               {
+                id: 4,
                 title: "Kabulo-Kiwira Coal Mine",
-                location: "Kiwira-Ileje District",
-                description: "Coal mining and power plant project",
-                image: "/Equipments Images/WhatsApp Image 2026-03-02 at 16.00.15.jpeg",
+                location: "Kiwira, Ileje District",
+                description: "Amarachi is involved as a tenderee supporting coal loading, digging, and transportation operations from mining pits to stock areas.",
+                image: "/projects images/Kabulo-Kiwira Coal Mine.jpg",
+                role: "Tenderee",
               },
             ].map((project, index) => (
               <motion.div
@@ -470,7 +574,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col"
               >
                 <div className="relative h-48 overflow-hidden">
                   <Image
@@ -480,15 +584,27 @@ export default function Home() {
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute top-4 left-4">
+                    <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-white/90 text-brand-dark">
+                      Role: {project.role}
+                    </span>
+                  </div>
                   <div className="absolute bottom-4 left-4 text-white">
                     <p className="text-sm opacity-90">{project.location}</p>
                   </div>
                 </div>
-                <div className="p-6">
+                <div className="p-6 flex flex-col flex-1">
                   <h3 className="text-xl font-bold text-brand-dark mb-2 font-heading">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 text-sm">{project.description}</p>
+                  <p className="text-gray-600 text-sm flex-1">{project.description}</p>
+                  <Link
+                    href={`/projects/${project.id}`}
+                    className="inline-flex items-center space-x-1 text-brand-primary font-semibold text-sm hover:text-brand-secondary transition-colors group/link mt-4"
+                  >
+                    <span>Read More</span>
+                    <ArrowRight size={16} className="group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </motion.div>
             ))}
@@ -578,6 +694,90 @@ export default function Home() {
                 undergoes rigorous inspection before handover.
               </p>
             </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Directors Preview */}
+      <SectionWrapper className="py-20 lg:py-28 bg-brand-dark text-white relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/40 to-transparent" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-brand-primary-light font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Our Team</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+              Meet Our Directors
+            </h2>
+            <p className="text-gray-300 max-w-2xl mx-auto">
+              Experienced professionals guiding Amarachi towards excellence
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+            {[
+              {
+                name: "Bernard Akilimali",
+                role: "Director of Operations",
+                image: "/Directors/Bernard Akilimali Temu.png",
+              },
+              {
+                name: "Avelin Simon Riwa",
+                role: "Director of Finance & Administration",
+                image: "/Directors/Avelin Simon Riwa.png",
+              },
+              {
+                name: "Christopher Kirama Temu",
+                role: "Director of Strategy & New Business",
+                image: "/Directors/Christopher kirama Temu.png",
+              },
+            ].map((leader, index) => (
+              <motion.div
+                key={leader.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                className="group"
+              >
+                <div className="bg-white/5 backdrop-blur-sm rounded-3xl p-6 lg:p-8 border border-white/10 hover:bg-white/10 hover:border-brand-secondary/40 transition-all duration-500">
+                  <div className="relative w-full aspect-square max-w-[260px] mx-auto mb-6 rounded-2xl overflow-hidden shadow-2xl">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/40 z-10" />
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 rounded-2xl ring-2 ring-white/20 z-20 pointer-events-none" />
+                  </div>
+                  <div className="text-center">
+                    <h3 className="text-xl lg:text-2xl font-bold mb-2 font-heading text-white">
+                      {leader.name}
+                    </h3>
+                    <div className="inline-flex items-center px-4 py-1.5 bg-brand-secondary/20 rounded-full">
+                      <p className="text-brand-secondary font-semibold text-sm">
+                        {leader.role}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              href="/about"
+              className="inline-flex items-center space-x-2 bg-brand-secondary text-white px-8 py-4 rounded-lg font-semibold hover:bg-red-700 transition-all duration-300 shadow-lg"
+            >
+              <span>Learn More About Us</span>
+              <ArrowRight size={18} />
+            </Link>
           </div>
         </div>
       </SectionWrapper>

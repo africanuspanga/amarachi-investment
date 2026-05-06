@@ -43,8 +43,8 @@ export default function Navbar({ cartCount = 0, onCartClick }: NavbarProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20 sm:h-24">
           {/* Logo - Only logo, no text, bigger, using negative margin to extend beyond navbar */}
-          <Link href="/" className="flex items-center -my-4 sm:-my-6">
-            <div className="relative w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28">
+          <Link href="/" className="flex items-center -my-6 sm:-my-8">
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32">
               <Image
                 src="/new original logo.png"
                 alt="Amarachi Investment Logo"

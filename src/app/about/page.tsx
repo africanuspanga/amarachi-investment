@@ -20,35 +20,19 @@ const leaders = [
   {
     name: "Bernard Akilimali",
     role: "Director of Operations",
-    image: null,
+    image: "/Directors/Bernard Akilimali Temu.png",
   },
   {
     name: "Avelin Simon Riwa",
     role: "Director of Finance & Administration",
-    image: null,
+    image: "/Directors/Avelin Simon Riwa.png",
   },
   {
     name: "Christopher Kirama Temu",
     role: "Director of Strategy & New Business",
-    image: null,
+    image: "/Directors/Christopher kirama Temu.png",
   },
 ];
-
-// Image Placeholder Component for team members
-function TeamImagePlaceholder({ name }: { name: string }) {
-  return (
-    <div className="w-full h-full bg-gradient-to-br from-brand-primary/10 to-brand-secondary/10 flex items-center justify-center">
-      <div className="text-center p-4">
-        <div className="w-20 h-20 mx-auto mb-2 rounded-full bg-brand-primary/20 flex items-center justify-center">
-          <span className="text-2xl font-bold text-brand-primary">
-            {name.split(' ').map(n => n[0]).join('')}
-          </span>
-        </div>
-        <span className="text-xs text-gray-500">Photo coming soon</span>
-      </div>
-    </div>
-  );
-}
 
 export default function AboutPage() {
   return (
@@ -180,37 +164,58 @@ export default function AboutPage() {
       </SectionWrapper>
 
       {/* Leadership */}
-      <SectionWrapper className="py-20 lg:py-28 bg-brand-dark text-white">
+      <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center space-x-2 text-brand-primary-light font-medium mb-4">
+            <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
               <div className="w-8 h-0.5 bg-brand-secondary" />
               <span className="uppercase tracking-wide text-sm">Our Team</span>
               <div className="w-8 h-0.5 bg-brand-secondary" />
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 font-heading">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
               Leadership Team
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
+            <p className="text-gray-600 max-w-2xl mx-auto">
               Experienced professionals guiding our company towards excellence
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
             {leaders.map((leader, index) => (
               <motion.div
                 key={leader.name}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
+                transition={{ delay: index * 0.15, duration: 0.5 }}
+                className="group"
               >
-                <div className="relative w-48 h-48 mx-auto mb-6 rounded-2xl overflow-hidden border-4 border-brand-secondary/30">
-                  <TeamImagePlaceholder name={leader.name} />
+                <div className="bg-white rounded-3xl p-6 lg:p-8 border border-gray-100 shadow-lg hover:shadow-2xl hover:border-brand-secondary/30 transition-all duration-500">
+                  {/* Photo */}
+                  <div className="relative w-full aspect-square max-w-[280px] mx-auto mb-6 rounded-2xl overflow-hidden shadow-xl">
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30 z-10" />
+                    <Image
+                      src={leader.image}
+                      alt={leader.name}
+                      fill
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                    />
+                    {/* Decorative ring */}
+                    <div className="absolute inset-0 rounded-2xl ring-2 ring-gray-100 z-20 pointer-events-none" />
+                  </div>
+
+                  {/* Info */}
+                  <div className="text-center">
+                    <h3 className="text-xl lg:text-2xl font-bold mb-2 font-heading text-brand-dark">
+                      {leader.name}
+                    </h3>
+                    <div className="inline-flex items-center px-4 py-1.5 bg-brand-secondary/10 rounded-full">
+                      <p className="text-brand-secondary font-semibold text-sm">
+                        {leader.role}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold mb-2 font-heading">{leader.name}</h3>
-                <p className="text-brand-secondary font-medium">{leader.role}</p>
               </motion.div>
             ))}
           </div>

@@ -301,7 +301,7 @@ export default function ContactPage() {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="grayscale hover:grayscale-0 transition-all duration-500"
+                  className="transition-all duration-500"
                 />
               </div>
 
@@ -343,6 +343,30 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* CTA Section */}
+      <SectionWrapper className="py-20 lg:py-28 bg-brand-primary relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-brand-dark" />
+        </div>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6 font-heading">
+            Ready to Start Your Project?
+          </h2>
+          <p className="text-xl text-white/80 mb-10">
+            Get a free quote today. Tell us what you need and we&apos;ll get back to you right away.
+          </p>
+          <a
+            href="https://wa.me/255713057706?text=Hello Amarachi, I would like to request a quote for..."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center space-x-2 bg-green-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-green-600 transition-all duration-300 shadow-lg text-lg"
+          >
+            <MessageCircle size={22} />
+            <span>Request a Quote on WhatsApp</span>
+          </a>
+        </div>
+      </SectionWrapper>
 
       {/* Working Hours */}
       <SectionWrapper className="py-16 bg-white">

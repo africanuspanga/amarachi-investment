@@ -5,51 +5,70 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Construction,
-  Building2,
+  HardHat,
   Truck,
   Settings,
-  MapPin,
-  TrendingUp,
   ArrowRight,
   CheckCircle,
   Shield,
   Award,
   Clock,
+  Gem,
+  Mountain,
+  Layers,
+  CircleDot,
+  Radio,
 } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionWrapper from "@/components/SectionWrapper";
 
 const services = [
   {
+    icon: HardHat,
+    title: "Mining",
+    description: "Licensed mining operations for industrial materials. We hold Primary Mining Licenses (PMLs) for feldspar, dolomite, aggregates, and other industrial minerals, with expertise in open pit and underground mining.",
+    image: "/Equipments Images/Mining.jpg",
+    features: [
+      "Primary Mining Licenses (PMLs) for feldspar, dolomite & aggregates",
+      "Open pit and underground mining",
+      "Quarry extraction and stone crushing",
+      "Drilling and blasting operations",
+      "Aggregate classification and separation",
+      "Coal and mineral extraction",
+    ],
+  },
+  {
     icon: Construction,
-    title: "Civil Engineering Works",
-    description: "Comprehensive civil engineering solutions for infrastructure development",
-    image: "/excavation-work-progress.jpg",
+    title: "Civil & Building Contractors",
+    description: "Comprehensive civil engineering and building construction solutions for infrastructure development",
+    image: "/Equipments Images/Civil construction.jpg",
     features: [
       "Earthworks & excavation",
       "Road works & rehabilitation",
       "Drainage and stormwater systems",
-      "Site preparation & leveling",
-      "Concrete and structural works support",
-    ],
-  },
-  {
-    icon: Building2,
-    title: "Building Construction",
-    description: "Quality construction services for various building types",
-    image: "/view-modern-construction-site.jpg",
-    features: [
       "Residential & commercial buildings",
       "Industrial facilities",
-      "Renovation & maintenance",
       "Turnkey project delivery",
     ],
   },
   {
+    icon: Settings,
+    title: "Equipment Rental",
+    description: "Heavy equipment leasing and operation services with experienced operators",
+    image: "/Equipments Images/Equipment-rental.jpeg",
+    features: [
+      "Equipment leasing with operator",
+      "Short and long-term hire",
+      "Excavators, loaders, graders, dozers",
+      "Standby support for project sites",
+      "Preventive maintenance programs",
+    ],
+  },
+  {
     icon: Truck,
-    title: "Transportation & Logistics",
+    title: "Transportation",
     description: "Reliable transport solutions for construction and project needs",
-    image: "/heavy-excavator-digging-day-light.jpg",
+    image: "/Equipments Images/Transportation.jpeg",
     features: [
       "Construction material haulage",
       "Heavy cargo transportation",
@@ -58,39 +77,16 @@ const services = [
     ],
   },
   {
-    icon: Settings,
-    title: "Equipment & Machinery Supply",
-    description: "Heavy equipment leasing and operation services",
-    image: "/excavator-digging-ground-day-light.jpg",
+    icon: Radio,
+    title: "ECTS Tracking",
+    description: "TRA-authorized Electronic Cargo Tracking System for real-time fleet and cargo monitoring",
+    image: "/Equipments Images/ECTS.jpeg",
     features: [
-      "Equipment leasing with operator",
-      "Short and long-term hire",
-      "Standby support for project sites",
-      "Preventive maintenance programs",
-    ],
-  },
-  {
-    icon: MapPin,
-    title: "ECTS Tracking System",
-    description: "Advanced fleet and equipment monitoring solutions",
-    image: "/istockphoto-1489320181-612x612.jpg",
-    features: [
-      "Real-time equipment visibility",
-      "Fuel monitoring",
-      "Security and theft prevention",
-      "Maintenance scheduling",
-      "Productivity reporting",
-    ],
-  },
-  {
-    icon: TrendingUp,
-    title: "Project Mobilization & Support",
-    description: "Rapid deployment and support for your projects",
-    image: "/african-american-worker-standing-uniform-wearing-safety-hat-factory.jpg",
-    features: [
-      "Rapid deployment of machines and crews",
-      "Flexible scheduling",
-      "Multi-site operations support",
+      "Containerized cargo tracking",
+      "Wet Cargo (Fuel/Oil) monitoring",
+      "IT vehicles (Trucks/LIV's) tracking",
+      "Loose Cargo (Flatbed/box body) tracking",
+      "Real-time seal status monitoring",
     ],
   },
 ];
@@ -278,6 +274,88 @@ export default function ServicesPage() {
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </SectionWrapper>
+
+      {/* Mining Licenses Section */}
+      <SectionWrapper className="py-20 lg:py-28 bg-brand-dark text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center space-x-2 text-brand-primary-light font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Licensed Operations</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 font-heading">
+              Primary Mining Licenses (PMLs)
+            </h2>
+            <p className="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+              Mining of industrial materials is one of the business activities generating 
+              significant revenue for our company. We hold several Primary Mining Licenses 
+              for different materials, showcasing our strength and active involvement in the mining sector.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              {
+                icon: Gem,
+                title: "Feldspar",
+                description: "Licensed extraction and processing of feldspar for industrial and ceramic applications.",
+                image: "/mining/Feldspar.jpg",
+              },
+              {
+                icon: Mountain,
+                title: "Dolomite",
+                description: "Primary Mining License for dolomite used in construction, steel, and glass manufacturing.",
+                image: "/mining/Dolomite.webp",
+              },
+              {
+                icon: Layers,
+                title: "Aggregates",
+                description: "Licensed quarry operations producing crushed stone, sand, and gravel for infrastructure.",
+                image: "/mining/Aggregates.jpg",
+              },
+              {
+                icon: CircleDot,
+                title: "Other Industrial Materials",
+                description: "Additional PMLs covering various industrial minerals and raw material extraction.",
+                image: "/mining/other industrial materials.jpg",
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="bg-white/5 rounded-2xl overflow-hidden border border-white/10 hover:bg-white/10 hover:border-brand-secondary/30 transition-all duration-300 group flex flex-col"
+              >
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4">
+                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center border border-white/30">
+                      <item.icon size={24} className="text-white" />
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6 lg:p-8 flex-1">
+                  <h3 className="text-xl font-bold mb-3 font-heading">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </SectionWrapper>
