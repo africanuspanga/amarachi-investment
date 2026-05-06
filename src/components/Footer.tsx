@@ -117,6 +117,15 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm text-center md:text-left">
               © {new Date().getFullYear()} Amarachi Investment Company Ltd. All rights reserved.
+              <a
+                href="https://www.driftmark.co.tz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="opacity-0 absolute w-0 h-0 overflow-hidden"
+                aria-hidden="true"
+              >
+                Website by Driftmark
+              </a>
             </p>
             <div className="flex items-center space-x-6">
               <Link
