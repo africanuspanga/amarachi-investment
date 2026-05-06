@@ -112,6 +112,18 @@ const processSteps = [
   },
 ];
 
+const partnerLogos = [
+  { name: "Arab Contractors", src: "/Trusted Partners & Clients/Arab-Contractors.png", width: 160, height: 60 },
+  { name: "Elsewedy Electric", src: "/Trusted Partners & Clients/Elsewedy_Electric_Logo.svg.png", width: 180, height: 60 },
+  { name: "Tanzania Ports Authority", src: "/Trusted Partners & Clients/TPA Logo_bg_white.png", width: 140, height: 60 },
+  { name: "Twiga Cement", src: "/Trusted Partners & Clients/TWIGA-r.jpg", width: 160, height: 60 },
+  { name: "Partner", src: "/Trusted Partners & Clients/logo-1.png", width: 160, height: 60 },
+  { name: "Partner", src: "/Trusted Partners & Clients/logo.png", width: 160, height: 60 },
+  { name: "Partner", src: "/Trusted Partners & Clients/logo_302x312.png", width: 80, height: 60 },
+];
+
+const partnerLogosReverse = [...partnerLogos].reverse();
+
 export default function Home() {
   return (
     <>
@@ -310,6 +322,65 @@ export default function Home() {
         </div>
       </SectionWrapper>
 
+
+      {/* Trusted Partners & Clients */}
+      <SectionWrapper className="py-16 lg:py-20 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
+          <div className="text-center">
+            <div className="inline-flex items-center space-x-2 text-brand-primary font-medium mb-4">
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+              <span className="uppercase tracking-wide text-sm">Our Network</span>
+              <div className="w-8 h-0.5 bg-brand-secondary" />
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-dark mb-4 font-heading">
+              Trusted Partners & Clients
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Proud to work with industry-leading organizations across Tanzania
+            </p>
+          </div>
+        </div>
+
+        {/* Scrolling logos row 1 — left to right */}
+        <div className="relative w-full mb-8">
+          <div className="flex w-max animate-marquee-left">
+            {[...partnerLogos, ...partnerLogos].map((logo, index) => (
+              <div
+                key={`r1-${index}`}
+                className="flex items-center justify-center mx-8 lg:mx-12 h-16 lg:h-20 flex-shrink-0"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={logo.width}
+                  height={logo.height}
+                  className="max-h-14 lg:max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Scrolling logos row 2 — right to left */}
+        <div className="relative w-full">
+          <div className="flex w-max animate-marquee-right">
+            {[...partnerLogosReverse, ...partnerLogosReverse].map((logo, index) => (
+              <div
+                key={`r2-${index}`}
+                className="flex items-center justify-center mx-8 lg:mx-12 h-16 lg:h-20 flex-shrink-0"
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.name}
+                  width={logo.width}
+                  height={logo.height}
+                  className="max-h-14 lg:max-h-16 w-auto object-contain grayscale hover:grayscale-0 transition-all duration-500 opacity-70 hover:opacity-100"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </SectionWrapper>
 
       {/* Services Preview */}
       <SectionWrapper className="py-20 lg:py-28 bg-gray-50">
