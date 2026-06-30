@@ -203,17 +203,17 @@ export const projects: Project[] = [
   },
   {
     id: 8,
-    title: "Construction of Rigid Pavement Road, Super to Golani 4km",
+    title: "Construction of Rigid Pavement Road, Suka to Golani 4km",
     image: "/Suka-Golani Road.png",
     status: "Executed",
     role: "Contractor",
     clientOrOwner: "TARURA (Tanzania Rural and Urban Roads Agency)",
-    location: "Super to Golani, 4 km",
+    location: "Suka to Golani, 4 km",
     category: "Road Construction",
     summary:
-      "Amarachi Investment Company Limited served as the contractor for the construction of a 4 km rigid pavement road from Super to Golani, executed for the Tanzania Rural and Urban Roads Agency (TARURA) between 2024 and 2025.",
+      "Amarachi Investment Company Limited served as the contractor for the construction of a 4 km rigid pavement road from Suka to Golani, executed for the Tanzania Rural and Urban Roads Agency (TARURA) between 2024 and 2025.",
     objectives: [
-      "Construct a 4 km rigid pavement road from Super to Golani.",
+      "Construct a 4 km rigid pavement road from Suka to Golani.",
       "Improve road durability and traffic flow in the project area.",
       "Deliver the road works within the 2024–2025 project timeline.",
     ],
