@@ -7,6 +7,7 @@ import {
   HardHat,
   Truck,
   Construction,
+  Warehouse,
   LucideIcon,
 } from "lucide-react";
 
@@ -17,6 +18,7 @@ const iconMap: Record<string, LucideIcon> = {
   HardHat,
   Truck,
   Road: Construction,
+  Warehouse,
 };
 
 export default function ProjectIcon({

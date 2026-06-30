@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -18,6 +19,35 @@ import SectionWrapper from "@/components/SectionWrapper";
 import ProjectIcon from "@/components/ProjectIcon";
 import { projects, getProjectById } from "@/data/projects";
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}): Promise<Metadata> {
+  const { id } = await params;
+  const project = getProjectById(Number(id));
+
+  if (!project) {
+    return {
+      title: "Project Not Found | Amarachi Investment Company Ltd",
+    };
+  }
+
+  return {
+    title: `${project.title} | Amarachi Investment Company Ltd`,
+    description: project.summary,
+    alternates: {
+      canonical: `/projects/${project.id}`,
+    },
+    openGraph: {
+      title: `${project.title} | Amarachi Investment Company Ltd`,
+      description: project.summary,
+      url: `/projects/${project.id}`,
+      images: project.image ? [project.image] : ["/new original logo.png"],
+    },
+  };
+}
+
 export function generateStaticParams() {
   return projects.map((project) => ({
     id: String(project.id),
@@ -30,6 +60,7 @@ function RoleBadge({ role }: { role: string }) {
     "Project Owner": "bg-emerald-500/15 text-emerald-600 border-emerald-500/30",
     Tenderee: "bg-amber-500/15 text-amber-600 border-amber-500/30",
     Transporter: "bg-purple-500/15 text-purple-600 border-purple-500/30",
+    Contractor: "bg-rose-500/15 text-rose-600 border-rose-500/30",
   };
   return (
     <span
@@ -59,12 +90,13 @@ function StatusBadge({ status }: { status: string }) {
   );
 }
 
-export default function ProjectDetailPage({
+export default async function ProjectDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
-  const project = getProjectById(Number(params.id));
+  const { id } = await params;
+  const project = getProjectById(Number(id));
 
   if (!project) {
     notFound();
@@ -190,8 +222,8 @@ export default function ProjectDetailPage({
                 </div>
                 <p className="text-gray-300 mb-6 leading-relaxed">
                   As a <strong className="text-white">{project.role}</strong> on
-                  this project, Amarachi Investment Company Limited is
-                  responsible for:
+                  this project, Amarachi Investment Company Limited{" "}
+                  {project.status === "Executed" ? "was" : "is"} responsible for:
                 </p>
                 <ul className="space-y-4">
                   {project.workItems.map((item, i) => (

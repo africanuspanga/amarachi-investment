@@ -171,6 +171,66 @@ export const projects: Project[] = [
     ],
     iconName: "Road",
   },
+  {
+    id: 7,
+    title: "Construction of a Warehouse in Ubungo District",
+    image: "/NSSF-WAREHOUSE UBUNGO.png",
+    status: "Executed",
+    role: "Contractor",
+    clientOrOwner: "NSSF (National Social Security Fund)",
+    location: "Ubungo District, Dar es Salaam",
+    category: "Warehouse Construction",
+    summary:
+      "Amarachi Investment Company Limited served as the contractor for the construction of a modern warehouse in Ubungo District, Dar es Salaam, for the National Social Security Fund (NSSF). The project was completed in 2024.",
+    objectives: [
+      "Deliver a durable and functional warehouse facility for NSSF in Ubungo District.",
+      "Complete construction works within the 2023–2024 project timeline.",
+      "Meet client quality, safety, and handover standards.",
+    ],
+    scope: [
+      "Site preparation and earthworks.",
+      "Reinforced concrete foundation and floor works.",
+      "Steel structure erection and cladding.",
+      "External works and site finishing.",
+    ],
+    workItems: [
+      "Excavation and earthworks",
+      "Concrete works",
+      "Steel structure erection",
+      "Finishing and site handover",
+    ],
+    iconName: "Warehouse",
+  },
+  {
+    id: 8,
+    title: "Construction of Rigid Pavement Road, Super to Golani 4km",
+    image: "/Suka-Golani Road.png",
+    status: "Executed",
+    role: "Contractor",
+    clientOrOwner: "TARURA (Tanzania Rural and Urban Roads Agency)",
+    location: "Super to Golani, 4 km",
+    category: "Road Construction",
+    summary:
+      "Amarachi Investment Company Limited served as the contractor for the construction of a 4 km rigid pavement road from Super to Golani, executed for the Tanzania Rural and Urban Roads Agency (TARURA) between 2024 and 2025.",
+    objectives: [
+      "Construct a 4 km rigid pavement road from Super to Golani.",
+      "Improve road durability and traffic flow in the project area.",
+      "Deliver the road works within the 2024–2025 project timeline.",
+    ],
+    scope: [
+      "4 km rigid pavement road construction.",
+      "Road alignment, earthworks, and drainage.",
+      "Sub-base, base course, and concrete pavement works.",
+      "Road furniture and final handover.",
+    ],
+    workItems: [
+      "Earthworks and subgrade preparation",
+      "Sub-base and base course construction",
+      "Rigid pavement construction",
+      "Drainage and road finishing",
+    ],
+    iconName: "Road",
+  },
 ];
 
 export const ongoingProjects = projects.filter((p) => p.status === "Ongoing");

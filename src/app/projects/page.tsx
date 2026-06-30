@@ -50,6 +50,8 @@ function RoleBadge({ role }: { role: string }) {
       "bg-amber-500/15 text-amber-600 border-amber-500/30",
     Transporter:
       "bg-purple-500/15 text-purple-600 border-purple-500/30",
+    Contractor:
+      "bg-rose-500/15 text-rose-600 border-rose-500/30",
   };
   return (
     <span
@@ -234,7 +236,7 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { value: "5+", label: "Ongoing Projects" },
-              { value: "1+", label: "Completed Projects" },
+              { value: "3+", label: "Completed Projects" },
               { value: "2115MW", label: "Power Generation" },
               { value: "1016km", label: "Railway Construction" },
             ].map((stat, index) => (
