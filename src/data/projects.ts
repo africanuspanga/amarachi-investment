@@ -204,7 +204,7 @@ export const projects: Project[] = [
   {
     id: 8,
     title: "Construction of Rigid Pavement Road, Suka to Golani 4km",
-    image: "/Suka-Golani Road.png",
+    image: "/projects images/Suka-Golani Road.jpg",
     status: "Executed",
     role: "Contractor",
     clientOrOwner: "TARURA (Tanzania Rural and Urban Roads Agency)",
